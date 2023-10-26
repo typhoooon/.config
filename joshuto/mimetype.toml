@@ -8,6 +8,7 @@ audio_default = [
 ]
 
 image_default = [
+  { command = "feh", fork = true, silent = true },
   { command = "qimgv", args = [
     "--",
   ], fork = true, silent = true },
@@ -41,13 +42,16 @@ text_default = [
   ] },
 ]
 
-reader_default = [{ command = "evince", fork = true, silent = true }]
-#reader_default = [
-#	{ command = "evince" },
-#	{ command = "firefox" },
-#	{ command = "chromium" },
-#]
+#reader_default = [{ command = "evince", fork = true, silent = true }]
+reader_default = [
+#	{ command = "evince" ,fork = true, silent = true},
+	{ command = "firefox" , fork = true, silent = true},
+	{ command = "chromium" , fork = true, silent = true},
+]
 
+ebook_default = [
+	{ command = "ebook-viewer", fork = true, silent = true }
+]
 
 libreoffice_default = [{ command = "libreoffice", fork = true, silent = true }]
 
@@ -209,6 +213,12 @@ ppt.inherit = "libreoffice_default"
 pptx.inherit = "libreoffice_default"
 
 pdf.inherit = "reader_default"
+
+#pdf.app_list = [{ command = "chromium", fork = true, silent = true }]
+epub.inherit = "ebook_default"
+mobi.inherit = "ebook_default"
+azw3.inherit = "ebook_default"
+fb2.inherit= "ebook_default"
 
 kra.app_list = [{ command = "krita", fork = true, silent = true }]
 kdenlive.app_list = [{ command = "kdenlive", fork = true, silent = true }]

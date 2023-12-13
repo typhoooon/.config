@@ -47,6 +47,7 @@ reader_default = [
 #	{ command = "evince" ,fork = true, silent = true},
 	{ command = "firefox" , fork = true, silent = true},
 	{ command = "chromium" , fork = true, silent = true},
+	{ command = "zathura" , fork = true, silent = true},
 ]
 
 ebook_default = [

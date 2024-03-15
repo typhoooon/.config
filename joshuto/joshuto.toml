@@ -1,10 +1,14 @@
 numbered_command = false
 
+mouse_support = true
+focus_on_create = true
 use_trash = true
 watch_files = true
 xdg_open = false
 xdg_open_fork = false
+case_insensitive_ext = false
 
+custom_commands = []
 
 [display]
 # default, hsplit
@@ -22,6 +26,11 @@ tilde_in_titlebar = true
 # none, absolute, relative
 line_number_style = "none"
 
+# size, mtime, user, gourp, perm. can be combined with |.
+# `none` to disable, `all` to enable all
+# all and none can't be combined with other options
+linemode = "size"
+
 [display.sort]
 # lexical, mtime, natural, size, ext
 sort_method = "natural"
@@ -35,6 +44,15 @@ preview_script = "~/.config/joshuto/preview_file.sh" # make sure it's marked as 
 preview_shown_hook_script = "~/.config/joshuto/on_preview_shown"  
 preview_removed_hook_script = "~/.config/joshuto/on_preview_removed" 
 
-[tab]
-# inherit, home, root
-home_page = "home"
+[search]
+# insensitive, sensitive, smart
+string_case_sensitivity = "insensitive"
+# see above
+glob_case_sensitivity = "sensitive"
+# see above
+regex_case_sensitivity = "sensitive"
+# see above
+
+#[tab]
+## inherit, home, root
+#home_page = "home"

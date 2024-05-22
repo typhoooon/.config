@@ -41,6 +41,10 @@ IFS=$'\n'
 # * pipefail causes a pipeline to fail also if a command other than the last one fails
 set -o noclobber -o noglob -o nounset -o pipefail
 
+# Enable exiftool large file support
+shopt -s expand_aliases
+alias exiftool='exiftool -api largefilesupport=1'
+
 FILE_PATH=""
 PREVIEW_WIDTH=10
 PREVIEW_HEIGHT=10
@@ -191,16 +195,15 @@ handle_mime() {
             exiftool "${FILE_PATH}" && exit 0
             exit 1 ;;
 
-	    image/png | image/jpeg)
-	        dimension="Size `exiftool "${FILE_PATH}" | grep '^Image Size' | awk '{print $4}'`"
-	        echo "$dimension"
-	        exit 4
-	        ;;	
-        # Image
+            ## Image
         image/*)
             ## Preview as text conversion
-            exiftool "${FILE_PATH}" && exit 0
-            exit 1 ;;
+ 	        dimension="Size `exiftool "${FILE_PATH}" | grep '^Image Size' | awk '{print $4}'`"
+ 	        echo "$dimension" && exit 0
+ 	        exit 1
+ 	        ;;	
+            #exiftool "${FILE_PATH}" && exit 0
+            #exit 1 ;;
 
             ## Video and audio
         video/* | audio/*)
